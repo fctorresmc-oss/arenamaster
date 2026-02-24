@@ -1,0 +1,42 @@
+# ===== HORÁRIOS DISPONÍVEIS =====
+
+schedule.rule create name="Society manhã" court="Quadra Society" days="seg,ter,qua,qui,sex,sab,dom" slots="07:00-08:00,08:00-09:00"
+
+schedule.rule create name="Society tarde/noite" court="Quadra Society" days="seg,ter,qua,qui,sex,sab,dom" slots="15:00-16:00,16:00-17:00,17:00-18:00,18:00-19:00,19:00-20:00,20:00-21:00,21:00-22:00,22:00-23:00,23:00-00:00"
+
+schedule.rule create name="Areia manhã" court="Quadra Areia" days="seg,ter,qua,qui,sex,sab,dom" slots="07:00-08:00,08:00-09:00"
+
+schedule.rule create name="Areia tarde/noite" court="Quadra Areia" days="seg,ter,qua,qui,sex,sab,dom" slots="15:00-16:00,16:00-17:00,17:00-18:00,18:00-19:00,19:00-20:00,20:00-21:00,21:00-22:00,22:00-23:00,23:00-00:00"
+
+
+# ===== RESERVA OBRIGATÓRIA LOGIN =====
+
+booking.require_login true
+
+
+# ===== CLIENTE ESCOLHE FIXO OU AVULSO =====
+
+booking.field create name="Tipo da Reserva" type="select" required=true options="Avulso,Fixo"
+
+
+# ===== BLOQUEAR HORÁRIO AUTOMÁTICO =====
+
+booking.auto_block true
+
+
+# ===== REGRAS DE CANCELAMENTO =====
+
+booking.cancel.rule create name="Cancelamento rápido" window_after_booking=10m
+booking.cancel.rule create name="Cancelamento antecipado" until_before=24h
+
+
+# ===== NOTIFICAÇÃO PUSH ADMIN =====
+
+admin.push enable type="nova_reserva"
+
+
+# ===== RECUPERAÇÃO DE SENHA VIA WHATSAPP =====
+
+auth.recovery.mode whatsapp
+auth.recovery.whatsapp "+5585SEUNUMERO"
+auth.force_change_password_first_login true
